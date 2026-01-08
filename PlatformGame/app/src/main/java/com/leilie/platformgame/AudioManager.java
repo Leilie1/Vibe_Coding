@@ -63,6 +63,6 @@ public class AudioManager {
             sum += Math.abs(buffer[i]);
         }
         float average = (float) sum / length;
-        return Math.min(average / 3000f, 1.5f);
+        return Math.min(average / 1000f, 1.5f);
     }
 }
