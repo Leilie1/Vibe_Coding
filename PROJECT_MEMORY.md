@@ -20,7 +20,7 @@ Ceci assure que le contexte est préservé à la fois pour l'agent (mémoire à 
 
 ## 📝 Contexte Technique (Technical Context)
 
-- **Friction (En attente)** : Une discussion précédente mentionnait l'intention de supprimer la friction dans `Player.java` (`velocityX *= 0.95f`), mais cela n'a pas encore été appliqué dans la session actuelle.
+- **Friction (En attente)** : Une discussion précédente mentionnait l'intention de supprimer la friction dans `Player.java` (`velocityX *= 0.95f`)
 
 ## 📌 À Faire (Todo)
 
