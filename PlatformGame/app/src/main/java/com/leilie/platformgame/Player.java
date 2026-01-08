@@ -21,8 +21,6 @@ public class Player {
         x += velocityX;
         y += velocityY;
         
-        velocityX *= 0.95f;
-        if (Math.abs(velocityX) < 0.1f) velocityX = 0;
     }
 
     public void moveLeft(float tilt) {
