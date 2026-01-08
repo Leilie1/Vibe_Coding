@@ -19,7 +19,7 @@ public class GameEngineTest {
         level.coins.add(new Level.Coin(150, 150));
         level.enemies.add(new Level.Enemy(300, 150, 40, 40));
         
-        gameEngine = new GameEngine(level);
+        gameEngine = new GameEngine(level, null);
     }
 
     @Test

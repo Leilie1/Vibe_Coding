@@ -6,9 +6,17 @@ public class GameEngine {
     private int coinsCollected = 0;
     private boolean gameWon = false;
     private boolean gameLost = false;
+    private GameEventListener listener;
 
-    public GameEngine(Level level) {
+    public interface GameEventListener {
+        void onCoinCollected();
+        void onGameWon();
+        void onGameLost();
+    }
+
+    public GameEngine(Level level, GameEventListener listener) {
         this.level = level;
+        this.listener = listener;
         this.player = new Player(level.startX, level.startY);
     }
 
@@ -44,6 +52,7 @@ public class GameEngine {
                 if (dx * dx + dy * dy < (player.radius + 20) * (player.radius + 20)) {
                     coin.collected = true;
                     coinsCollected++;
+                    if (listener != null) listener.onCoinCollected();
                 }
             }
         }
@@ -54,20 +63,26 @@ public class GameEngine {
         float dy = player.y - level.endY;
         if (dx * dx + dy * dy < (player.radius + 30) * (player.radius + 30)) {
             gameWon = true;
+            if (listener != null) listener.onGameWon();
         }
     }
 
     private void checkLoseCondition() {
+        boolean lost = false;
         if (player.y > 2000) {
-            gameLost = true;
-            return;
-        }
-
-        for (Level.Enemy enemy : level.enemies) {
-            if (player.collidesWith(enemy.x, enemy.y, enemy.width, enemy.height)) {
-                gameLost = true;
-                return;
+            lost = true;
+        } else {
+            for (Level.Enemy enemy : level.enemies) {
+                if (player.collidesWith(enemy.x, enemy.y, enemy.width, enemy.height)) {
+                    lost = true;
+                    break;
+                }
             }
+        }
+        
+        if (lost) {
+            gameLost = true;
+            if (listener != null) listener.onGameLost();
         }
     }
 

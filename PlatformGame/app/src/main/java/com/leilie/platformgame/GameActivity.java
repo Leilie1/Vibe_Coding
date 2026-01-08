@@ -2,8 +2,12 @@ package com.leilie.platformgame;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +20,7 @@ public class GameActivity extends AppCompatActivity {
     private AudioManager audioManager;
     private TextView tvCoins;
     private Button btnPause;
+    private Vibrator vibrator;
     private boolean isPaused = false;
     private boolean dialogShown = false;
 
@@ -23,6 +28,8 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         gameView = findViewById(R.id.gameView);
         tvCoins = findViewById(R.id.tvCoins);
@@ -40,7 +47,22 @@ public class GameActivity extends AppCompatActivity {
             level = LevelLoader.createDefaultLevel();
         }
 
-        gameEngine = new GameEngine(level);
+        gameEngine = new GameEngine(level, new GameEngine.GameEventListener() {
+            @Override
+            public void onCoinCollected() {
+                vibrate(50);
+            }
+
+            @Override
+            public void onGameWon() {
+                vibratePattern(new long[]{0, 200, 100, 200, 100, 200});
+            }
+
+            @Override
+            public void onGameLost() {
+                vibratePattern(new long[]{0, 200, 100, 200});
+            }
+        });
         gameView.setGameEngine(gameEngine);
 
         sensorManager = new SensorManager(this, tilt -> {
@@ -173,5 +195,25 @@ public class GameActivity extends AppCompatActivity {
         gameView.pauseGame();
         sensorManager.stop();
         audioManager.stopRecording();
+    }
+
+    private void vibrate(long milliseconds) {
+        if (vibrator != null && vibrator.hasVibrator()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                vibrator.vibrate(VibrationEffect.createOneShot(milliseconds, VibrationEffect.DEFAULT_AMPLITUDE));
+            } else {
+                vibrator.vibrate(milliseconds);
+            }
+        }
+    }
+
+    private void vibratePattern(long[] pattern) {
+        if (vibrator != null && vibrator.hasVibrator()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                vibrator.vibrate(VibrationEffect.createWaveform(pattern, -1));
+            } else {
+                vibrator.vibrate(pattern, -1);
+            }
+        }
     }
 }

@@ -13,6 +13,11 @@ Ceci assure que le contexte est préservé à la fois pour l'agent (mémoire à 
 ## 📅 Modifications Récentes (Recent Changes)
 
 ### 2026-01-08
+- **Retour Haptique (Vibrations)** : Ajout de vibrations pour les événements de jeu.
+  - **Coin** : 1 petite vibration (50ms).
+  - **Défaite** : 2 vibrations.
+  - **Victoire** : 3 vibrations.
+  - **Fichiers modifiés** : `AndroidManifest.xml`, `GameEngine.java`, `GameActivity.java`, `GameEngineTest.java`.
 - **Sensibilité du Microphone** : La sensibilité du microphone pour le saut a été **augmentée (x3)**.
   - **Fichier modifié** : `PlatformGame/app/src/main/java/com/leilie/platformgame/AudioManager.java`
   - **Détail** : Le diviseur d'amplitude a été changé de `3000f` à `1000f`.
@@ -20,7 +25,8 @@ Ceci assure que le contexte est préservé à la fois pour l'agent (mémoire à 
 
 ## 📝 Contexte Technique (Technical Context)
 
-- **Friction (En attente)** : Une discussion précédente mentionnait l'intention de supprimer la friction dans `Player.java` (`velocityX *= 0.95f`)
+- **Friction** : Vérification faite, le code de friction (`velocityX *= 0.95f`) est **déjà absent** de `Player.java`. Le joueur n'a donc pas de décélération horizontale automatique (comportement "patinoire").
+
 
 ## 📌 À Faire (Todo)
 
