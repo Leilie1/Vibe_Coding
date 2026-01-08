@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Platform Game</string>
+    <string name="start_game">Démarrer</string>
+    <string name="level_select">Sélectionner Niveau</string>
+    <string name="pause">Pause</string>
+    <string name="resume">Reprendre</string>
+    <string name="restart">Recommencer</string>
+    <string name="menu">Menu</string>
+    <string name="victory">Gagné!</string>
+    <string name="coins_collected">Pièces récoltées: %d</string>
+    <string name="game_over">Perdu!</string>
+</resources>

@@ -1,0 +1,40 @@
+# Android
+*.apk
+*.ap_
+*.dex
+*.class
+bin/
+gen/
+out/
+.gradle/
+build/
+local.properties
+.idea/
+*.iml
+*.iws
+*.ipr
+.DS_Store
+captures/
+.externalNativeBuild
+.cxx
+
+# Java
+*.jar
+!gson-2.10.1.jar
+*.war
+*.ear
+*.log
+
+# Gradle
+.gradle
+gradle-app.setting
+!gradle-wrapper.jar
+
+# Editor
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db
