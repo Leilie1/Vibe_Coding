@@ -27,6 +27,11 @@ La mécanique de saut (crier pour sauter) a été recalibrée pour être moins e
 - **Friction** : Nous avons confirmé l'absence de friction horizontale sur le joueur.
 - **Comportement** : Le joueur ne ralentit pas automatiquement lorsqu'il est au sol (comportement type "glisse" ou "inertie conservée"), ce qui est le comportement voulu pour ce type de contrôle au gyroscope.
 
+### 4. 🧠 Système de Mémoire Partagée
+- **Objectif** : Assurer la continuité du contexte de développement entre différentes sessions ou machines.
+- **Mise en place** : Création du fichier `PROJECT_MEMORY.md` à la racine du projet.
+- **Utilisation** : Ce fichier centralise les décisions techniques, les changements récents et le contexte global, permettant à l'agent de maintenir une cohérence à long terme.
+
 ## 📂 Fichiers Impactés
 
 Les modifications récentes ont touché les fichiers suivants :
