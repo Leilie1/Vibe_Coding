@@ -10,6 +10,7 @@ Depuis le dernier rapport, nous nous sommes concentrés sur l'amélioration du "
 
 ### 1. Retour Haptique (Vibrations)
 L'immersion a été renforcée par l'ajout de vibrations contextuelles :
+
 - **Collecte de pièce** : Une vibration courte et légère (50ms).
 - **Défaite** : Deux vibrations distinctes pour marquer l'échec.
 - **Victoire** : Trois vibrations joyeuses pour célébrer la réussite.
@@ -18,6 +19,7 @@ L'immersion a été renforcée par l'ajout de vibrations contextuelles :
 
 ### 2. Sensibilité du Microphone
 La mécanique de saut (crier pour sauter) a été recalibrée pour être moins exigeante.
+
 - **Modification** : Augmentation de la sensibilité par un facteur de 3.
 - **Détail** : Le seuil de déclenchement dans `AudioManager` a été ajusté (diviseur passé de 3000f à 1000f).
 - **Résultat** : Le saut est plus facile à déclencher sans avoir besoin de crier trop fort.
