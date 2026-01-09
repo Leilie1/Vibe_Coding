@@ -45,11 +45,11 @@ Les modifications récentes ont touché les fichiers suivants :
 
 Le projet est toujours **stable et fonctionnel**. L'ajout des vibrations et l'ajustement du micro ne remettent pas en cause l'architecture existante. Tous les tests unitaires (22) passent toujours (avec les ajustements nécessaires effectués sur les mocks).
 
-## Prochaines Étapes (Mise à jour)
+## Améliorations Possibles
 
-La liste des améliorations futures a évolué :
+La liste des améliorations futures :
 
-- [ ] Tester le ressenti "in-hand" des vibrations sur différents appareils.
-- [ ] Ajouter des effets sonores (SFX) pour accompagner les vibrations (saut, pièce, fin).
-- [ ] Ajouter une musique de fond.
-- [ ] Créer de nouveaux niveaux plus complexes pour exploiter la mécanique de saut ajustée.
+- Tester le ressenti "in-hand" des vibrations sur différents appareils.
+- Ajouter des effets sonores (SFX) pour accompagner les vibrations (saut, pièce, fin).
+- Ajouter une musique de fond.
+- Créer de nouveaux niveaux plus complexes pour exploiter la mécanique de saut ajustée.
