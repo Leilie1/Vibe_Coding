@@ -55,3 +55,4 @@ La liste des améliorations futures :
 - Ajouter des effets sonores (SFX) pour accompagner les vibrations (saut, pièce, fin).
 - Ajouter une musique de fond.
 - Créer de nouveaux niveaux plus complexes pour exploiter la mécanique de saut ajustée.
+- Mise en place d'un fichier de restriction pour contrôler un peu plus les modifications de l'agent
