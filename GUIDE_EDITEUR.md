@@ -1,17 +1,7 @@
 # 🎨 Guide de l'Éditeur de Niveaux
 
 ## 🚀 Lancer l'Éditeur
-
-### Méthode 1 : Avec le Makefile
-```bash
-cd /home/leilie/n7/s9/vibe_coding_2
-make editor
 ```
-
-### Méthode 2 : Compilation et lancement manuel
-```bash
-cd /home/leilie/n7/s9/vibe_coding_2/LevelEditor
-
 # 1. Compiler l'éditeur
 ./build.sh
 
@@ -45,12 +35,12 @@ Sauvegardez votre niveau (ex: `niveau2.json`)
 ### Étape 2 : Copier le fichier dans le projet
 ```bash
 # Copier le niveau dans le dossier assets
-cp niveau2.json /home/leilie/n7/s9/vibe_coding_2/PlatformGame/app/src/main/assets/
+cp niveau2.json /home/votre_user/n7/s9/vibe_coding_2/PlatformGame/app/src/main/assets/
 ```
 
 ### Étape 3 : Recompiler l'APK
 ```bash
-cd /home/leilie/n7/s9/vibe_coding_2/PlatformGame
+cd /home/votre_user/n7/s9/vibe_coding_2/PlatformGame
 gradle assembleDebug
 ```
 

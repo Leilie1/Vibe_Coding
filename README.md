@@ -14,116 +14,114 @@ Jeu de plateforme 2D pour Android avec contrôles par capteurs :
 - Conditions de victoire/défaite
 - Format paysage
 
-## Structure du Projet
-
-### Application Android (PlatformGame/)
-- `MainActivity.java` : Menu principal
-- `GameActivity.java` : Activité de jeu
-- `GameView.java` : Rendu 2D du jeu
-- `GameEngine.java` : Logique du jeu
-- `Player.java` : Personnage joueur
-- `Level.java` : Structure des niveaux
-- `SensorManager.java` : Gestion du gyroscope
-- `AudioManager.java` : Gestion du microphone
-- `LevelLoader.java` : Chargement des niveaux
-
-### Éditeur de Niveaux (LevelEditor/)
-Application desktop Java Swing pour créer des niveaux personnalisés.
-
-## Compilation et Installation
-
-### 1. Compiler l'application Android
-
+## Compilation Rapide
+### En ligne de commande
 ```bash
-cd PlatformGame
-./gradlew assembleDebug
+# 1. Configurer ANDROID_HOME
+export ANDROID_HOME=/home/votre_user/Android/Sdk
+
+# 2. Compiler l'APK
+cd /home/votre_user/n7/s9/vibe_coding
+./COMPILE_NOW.sh
+
+# 3. L'APK est généré dans :
+PlatformGame/app/build/outputs/apk/debug/app-debug.apk
 ```
 
-L'APK sera généré dans : `app/build/outputs/apk/debug/app-debug.apk`
+## Installation sur Android
+### Transfert manuel
+1. Copiez le fichier `app-debug.apk` sur votre téléphone
+2. Ouvrez le fichier depuis le gestionnaire de fichiers
+3. Autorisez l'installation depuis des sources inconnues si demandé
+4. Installez l'application
 
-### 2. Installer l'APK sur Android
-
-```bash
-adb install app/build/outputs/apk/debug/app-debug.apk
-```
-
-Ou transférez le fichier APK sur votre téléphone et installez-le manuellement.
-
-### 3. Compiler l'éditeur de niveaux
+## Utiliser l'Éditeur de Niveaux
 
 ```bash
 cd LevelEditor
-chmod +x build.sh
 ./build.sh
-```
-
-### 4. Lancer l'éditeur
-
-```bash
 java -cp 'bin/LevelEditor.jar:gson-2.10.1.jar' com.leilie.leveleditor.LevelEditor
 ```
 
-## Utilisation de l'Éditeur de Niveaux
+### Créer un niveau personnalisé :
+1. Lancez l'éditeur
+2. Utilisez les outils pour placer des éléments
+3. Sauvegardez le niveau (ex: `mon_niveau.json`)
+4. Copiez le fichier dans `PlatformGame/app/src/main/assets/`
+5. Recompilez l'APK
 
-1. Sélectionnez un outil dans le menu déroulant
-2. Cliquez ou glissez sur le canvas pour placer des éléments :
-   - **Départ** : Position initiale du joueur
-   - **Arrivée** : Objectif à atteindre
-   - **Plateforme** : Glissez pour créer une plateforme
-   - **Ennemi** : Glissez pour créer un ennemi
-   - **Pièce** : Cliquez pour placer une pièce
-   - **Supprimer** : Cliquez sur un élément pour le supprimer
-3. Cliquez sur "Sauvegarder" pour exporter le niveau en JSON
-4. Placez le fichier JSON dans `PlatformGame/app/src/main/assets/`
+## Lancer le Jeu
+
+1. Ouvrez l'application "Platform Game" sur votre téléphone
+2. Tenez le téléphone en mode paysage
+3. Cliquez sur "Démarrer"
+4. Penchez le téléphone pour déplacer la boule
+5. Criez pour sauter !
+
+## Contrôles
+
+- **Pencher à droite** : Avancer
+- **Pencher à gauche** : Reculer
+- **Crier** : Sauter (plus fort = plus haut)
+- **Bouton Pause** : Mettre en pause
+
+## Dépannage
+
+### "ANDROID_HOME not set"
+```bash
+# Trouvez votre SDK Android
+find ~ -name "platform-tools" 2>/dev/null
+
+# Définissez ANDROID_HOME (ajoutez à ~/.bashrc pour permanence)
+export ANDROID_HOME=/chemin/trouvé/..
+```
+
+### "Permission denied"
+```bash
+chmod +x build_apk.sh
+chmod +x PlatformGame/gradlew
+```
+
+### "Gradle sync failed"
+- Ouvrez le projet dans Android Studio
+- Cliquez sur "File" > "Sync Project with Gradle Files"
+
+### Le gyroscope ne fonctionne pas
+- Vérifiez que votre téléphone a un gyroscope
+- Testez avec une autre application de gyroscope
+
+### Le microphone ne détecte rien
+- Accordez la permission microphone dans les paramètres de l'app
+- Testez avec une autre application d'enregistrement
 
 ## Tests
-
-Exécuter les tests unitaires :
 
 ```bash
 cd PlatformGame
 ./gradlew test
 ```
 
-Tests inclus :
-- `GameEngineTest` : Tests du moteur de jeu
-- `PlayerTest` : Tests du personnage
-- `LevelTest` : Tests des structures de niveau
+## Structure des Fichiers
 
-## Permissions Requises
+```
+leilie/
+├── PlatformGame/          # Application Android
+│   ├── app/
+│   │   ├── src/
+│   │   │   ├── main/
+│   │   │   │   ├── java/          # Code source
+│   │   │   │   ├── res/           # Ressources
+│   │   │   │   └── assets/        # Niveaux JSON
+│   │   │   └── test/              # Tests unitaires
+│   │   └── build.gradle
+│   └── build/
+│       └── outputs/apk/debug/     # APK généré ici
+├── LevelEditor/           # Éditeur de niveaux
+│   ├── src/
+│   └── bin/
+└── README.md
+```
 
-- `RECORD_AUDIO` : Pour détecter les cris via le microphone
-- Capteur gyroscope : Pour les contrôles de mouvement
+## Support
 
-## Configuration Minimale
-
-- Android 7.0 (API 24) ou supérieur
-- Gyroscope requis
-- Microphone requis
-
-## Notes Techniques
-
-- Le jeu tourne à ~60 FPS (16ms par frame)
-- La physique utilise une gravité simple
-- Les collisions sont basées sur des formes géométriques
-- Les niveaux sont stockés au format JSON
-
-## Développement
-
-Pour modifier le jeu :
-1. Ouvrez le projet `PlatformGame` dans Android Studio
-2. Modifiez les fichiers Java selon vos besoins
-3. Testez avec `./gradlew test`
-4. Compilez avec `./gradlew assembleDebug`
-
-## Dépannage
-
-**Le gyroscope ne fonctionne pas** : Vérifiez que votre appareil possède un gyroscope
-
-**Le microphone ne détecte pas les sons** : Accordez la permission RECORD_AUDIO dans les paramètres
-
-**L'APK ne s'installe pas** : Activez "Sources inconnues" dans les paramètres de sécurité
-
-## Licence
-
-Projet éducatif - Libre d'utilisation
+Pour plus d'informations, consultez le fichier README.md complet.
