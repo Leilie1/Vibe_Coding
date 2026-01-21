@@ -1,5 +1,4 @@
 # Android
-*.apk
 *.ap_
 *.dex
 *.class
@@ -38,3 +37,5 @@ gradle-app.setting
 
 # OS
 Thumbs.db
+*:Zone.Identifier
+*.lnk
