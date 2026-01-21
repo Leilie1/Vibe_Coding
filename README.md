@@ -122,6 +122,9 @@ leilie/
 └── README.md
 ```
 
-## Support
+## Workflow
 
-Pour plus d'informations, consultez le fichier README.md complet.
+Afin d'assurer la continuité du contexte de développement entre différentes sessions ou machines pour un travail en groupe optimisé.
+Le fichier `PROJECT_MEMORY.md` stocke les informations importantes concernant les modifications récentes et l'état du projet.
+En complément, l'utilisation de Git assure la traçabilité du contexte, permettant une restauration rapide vers un état fonctionnel en cas de régression.
+
